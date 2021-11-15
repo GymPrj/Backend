@@ -18,7 +18,7 @@ jobs:
       run: chmod -x GymPrj/gradlew
     - name: Build with Gradle
       run: |
-        cd Backend/GymPrj
+        cd GymPrj
         sudo ./gradlew build
     - name: Build Docker Image
       uses: mr-smithers-excellent/docker-build-push@v5
