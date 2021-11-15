@@ -15,7 +15,7 @@ jobs:
         distribution: 'adopt'
         cache: gradle      
     - name: Grant execute permission for gradlew
-      run: chmod -x GymPrj/gradlew
+      run: chmod +x GymPrj/gradlew
     - name: Build with Gradle
       run: |
         cd GymPrj
