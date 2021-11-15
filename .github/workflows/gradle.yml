@@ -26,3 +26,25 @@ jobs:
         image: qwe199942/dockerepo
         tags: latest
         registry: docker.io
+        username: ${{ secrets.DOCKER_ID }}
+        password: ${{ secrets.DOCKER_PW }}
+        
+        
+        
+        
+  deploy:
+    needs: CI
+    name: Deploy
+    runs-on: [ self-hosted ]
+    steps:
+      - name: Login to Docker
+        uses: docker/login-action@v1
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKER_ID }}
+          password: ${{ secrets.DOCKER_PW }}
+      - name: Docker run
+        run: |
+          docker stop GymPrj && docker rm -fv GymPrj
+          docker rmi -f qwe199942/dockerepo
+          docker run -d -p 8080:8080 --name GymPrj --restart always qwe199942/dockerepo:latest
