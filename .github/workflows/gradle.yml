@@ -29,9 +29,8 @@ jobs:
         username: ${{ secrets.DOCKER_ID }}
         password: ${{ secrets.DOCKER_PW }}
         
-        
-        
-        
+      
+              
   deploy:
     needs: CI
     name: Deploy
