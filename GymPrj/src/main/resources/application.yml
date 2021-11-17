@@ -13,6 +13,10 @@ logging:
   level:
     org.springframework.orm.jpa: DEBUG
 
+server:
+  servlet:
+    context-path: /api
+
 
 jasypt:
   encryptor:
