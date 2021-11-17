@@ -23,7 +23,7 @@ public class SessionService {
     private final JwtService jwtService;
 
     public String login(LoginForm loginForm, int duration){
-        Member member = memberRepository.findByEmailId(loginForm.getEmail()).orElseThrow(() -> new GymPrjException(ErrorCode.MEMBER_NOT_FOUND));
+        Member member = memberRepository.findByEmail(loginForm.getEmail()).orElseThrow(() -> new GymPrjException(ErrorCode.MEMBER_NOT_FOUND));
         member.checkPassword(loginForm.getPassword(), passwordEncoder);
         return jwtService.createToken(member.createPayload(), ZonedDateTime.now().plusSeconds(duration));
     }
