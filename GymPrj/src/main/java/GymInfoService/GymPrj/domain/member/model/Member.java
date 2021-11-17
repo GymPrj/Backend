@@ -32,7 +32,7 @@ public class Member {
     private Sex sex;
 
     private Integer age;
-
+    
     private Address address;
 
     @Builder
