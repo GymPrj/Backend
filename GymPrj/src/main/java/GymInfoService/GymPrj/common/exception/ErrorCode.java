@@ -10,6 +10,8 @@ public enum ErrorCode {
     CREATE_TOKEN_FAIL(HttpStatus.BAD_REQUEST,"토큰 생성에 실패했습니다."),
 
     /* 401 UNAUTHORIZED : 인증되지 않은 사용자 */
+    MEMBER_NOT_FOUND(HttpStatus.UNAUTHORIZED,"존재하지 않는 회원 입니다."),
+    NOT_EQUAL_PASSWORD(HttpStatus.UNAUTHORIZED,"비밀번호가 일치하지 않습니다."),
 
     /* 404 NOT_FOUND : Resource 를 찾을 수 없음 */
 
