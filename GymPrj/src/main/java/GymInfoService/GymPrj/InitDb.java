@@ -2,6 +2,7 @@ package GymInfoService.GymPrj;
 
 import GymInfoService.GymPrj.domain.member.model.Member;
 import GymInfoService.GymPrj.domain.member.model.object.Address;
+import GymInfoService.GymPrj.domain.member.model.object.MemberType;
 import GymInfoService.GymPrj.domain.member.model.object.Sex;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,6 +38,8 @@ public class InitDb {
                     .age(26)
                     .sex(Sex.MALE)
                     .address(new Address("서울특별시", "강서구"))
+                    .phone("010-1111-2222")
+                    .memberType(MemberType.NORMAL)
                     .build();
 
             em.persist(member);
