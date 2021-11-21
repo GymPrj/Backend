@@ -1,8 +1,11 @@
 package GymInfoService.GymPrj;
 
+import GymInfoService.GymPrj.domain.category.model.CityCategory;
+import GymInfoService.GymPrj.domain.category.model.MemberTypeCategory;
+import GymInfoService.GymPrj.domain.category.model.TownCategory;
+import GymInfoService.GymPrj.domain.gym.model.Gym;
 import GymInfoService.GymPrj.domain.member.model.Member;
 import GymInfoService.GymPrj.domain.member.model.object.Address;
-import GymInfoService.GymPrj.domain.member.model.object.MemberType;
 import GymInfoService.GymPrj.domain.member.model.object.Sex;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -39,10 +42,31 @@ public class InitDb {
                     .sex(Sex.MALE)
                     .address(new Address("서울특별시", "강서구"))
                     .phone("010-1111-2222")
-                    .memberType(MemberType.NORMAL)
                     .build();
 
             em.persist(member);
+
+            MemberTypeCategory normal = MemberTypeCategory.builder()
+                    .typeName("NORMAL")
+                    .build();
+
+            MemberTypeCategory gym = MemberTypeCategory.builder()
+                    .typeName("GYM")
+                    .build();
+
+            em.persist(normal);
+            em.persist(gym);
+
+            CityCategory cityCategory = CityCategory.builder()
+                    .cityName("서울시")
+                    .build();
+
+            TownCategory townCategory = TownCategory.builder()
+                    .townName("강서구")
+                    .build();
+
+            em.persist(cityCategory);
+            em.persist(townCategory);
         }
     }
 }

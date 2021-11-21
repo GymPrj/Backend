@@ -12,8 +12,12 @@ public enum ErrorCode {
     /* 401 UNAUTHORIZED : 인증되지 않은 사용자 */
     MEMBER_NOT_FOUND(HttpStatus.UNAUTHORIZED,"존재하지 않는 회원 입니다."),
     NOT_EQUAL_PASSWORD(HttpStatus.UNAUTHORIZED,"비밀번호가 일치하지 않습니다."),
+    GYM_PENDING_STATUS(HttpStatus.UNAUTHORIZED,"가입대기중인 아이디 입니다."),
 
     /* 404 NOT_FOUND : Resource 를 찾을 수 없음 */
+    MEMBERTYPE_NOT_FOUNT(HttpStatus.NOT_FOUND,"회원유형을 찾을 수 없습니다."),
+    CITY_NOT_FOUNT(HttpStatus.NOT_FOUND,"도시를 찾을 수 없습니다."),
+    TOWN_NOT_FOUNT(HttpStatus.NOT_FOUND,"구/군을 찾을 수 없습니다."),
 
     /* 409 CONFLICT : Resource 의 현재 상태와 충돌. 보통 중복된 데이터 존재 */
     DUPLICATE_EMAIL(HttpStatus.CONFLICT,"이미 존재하는 이메일입니다."),
