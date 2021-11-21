@@ -5,7 +5,6 @@ import GymInfoService.GymPrj.common.exception.ErrorCode;
 import GymInfoService.GymPrj.common.exception.GymPrjException;
 import GymInfoService.GymPrj.common.jwt.MemberGymPayload;
 import GymInfoService.GymPrj.domain.member.model.object.Address;
-import GymInfoService.GymPrj.domain.member.model.object.MemberType;
 import GymInfoService.GymPrj.domain.member.model.object.Sex;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -25,6 +24,8 @@ public class Member extends Base {
     @Column(name = "member_id")
     private Long id;
 
+    private Long memberTypeId;
+
     private String email;
 
     private String password;
@@ -40,11 +41,9 @@ public class Member extends Base {
 
     private String phone;
 
-    @Enumerated(STRING)
-    private MemberType memberType;
 
     @Builder
-    public Member(Long id, String email, String password, String name, Sex sex, Integer age, Address address, String phone, MemberType memberType) {
+    public Member(Long id, String email, String password, String name, Sex sex, Integer age, Address address, String phone) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -53,7 +52,8 @@ public class Member extends Base {
         this.age = age;
         this.address = address;
         this.phone = phone;
-        this.memberType = memberType;
+        this.memberTypeId = 1L;
+
     }
 
 
@@ -63,6 +63,10 @@ public class Member extends Base {
         if(isNotEqualsPassword(password, passwordEncoder)){
             throw new GymPrjException(ErrorCode.NOT_EQUAL_PASSWORD);
         }
+    }
+
+    public void mapMemberType(Long memberTypeId){
+        this.memberTypeId = memberTypeId;
     }
 
     private boolean isNotEqualsPassword(String password, PasswordEncoder passwordEncoder) {

@@ -2,7 +2,6 @@ package GymInfoService.GymPrj.domain.member.dto;
 
 import GymInfoService.GymPrj.domain.member.model.Member;
 import GymInfoService.GymPrj.domain.member.model.object.Address;
-import GymInfoService.GymPrj.domain.member.model.object.MemberType;
 import GymInfoService.GymPrj.domain.member.model.object.Sex;
 import GymInfoService.GymPrj.domain.member.service.MemberValidator;
 import lombok.Data;
@@ -28,7 +27,6 @@ public class MemberForm {
 
     private String phone;
 
-    private MemberType memberType;
 
     public Member entity(MemberValidator memberValidator, PasswordEncoder passwordEncoder){
         encryptPassword(passwordEncoder);
@@ -41,7 +39,6 @@ public class MemberForm {
                 .age(age)
                 .address(new Address(city,town))
                 .phone(phone)
-                .memberType(memberType)
                 .build();
     }
 
