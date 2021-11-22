@@ -2,6 +2,7 @@ package GymInfoService.GymPrj.domain.category.model;
 
 import GymInfoService.GymPrj.common.base.Base;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import static lombok.AccessLevel.PROTECTED;
 
 @Entity
 @NoArgsConstructor(access = PROTECTED)
+@Getter
 public class CityCategory extends Base {
 
     @Id

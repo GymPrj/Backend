@@ -60,13 +60,36 @@ public class InitDb {
             CityCategory cityCategory = CityCategory.builder()
                     .cityName("서울시")
                     .build();
+            CityCategory cityCategory1 = CityCategory.builder()
+                    .cityName("부산시")
+                    .build();
 
             TownCategory townCategory = TownCategory.builder()
                     .townName("강서구")
+                    .category(cityCategory)
+                    .build();
+            TownCategory townCategory1 = TownCategory.builder()
+                    .townName("강남구")
+                    .category(cityCategory)
+                    .build();
+
+            TownCategory townCategory2 = TownCategory.builder()
+                    .townName("수영구")
+                    .category(cityCategory1)
+                    .build();
+
+            TownCategory townCategory3 = TownCategory.builder()
+                    .townName("금정구")
+                    .category(cityCategory1)
                     .build();
 
             em.persist(cityCategory);
             em.persist(townCategory);
+            em.persist(cityCategory1);
+            em.persist(townCategory1);
+            em.persist(townCategory2);
+            em.persist(townCategory3);
+
         }
     }
 }
