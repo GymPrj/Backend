@@ -1,7 +1,5 @@
 package GymInfoService.GymPrj.domain.member.service;
 
-import GymInfoService.GymPrj.common.exception.ErrorCode;
-import GymInfoService.GymPrj.common.exception.GymPrjException;
 import GymInfoService.GymPrj.domain.category.repository.MemberTypeCategoryRepository;
 import GymInfoService.GymPrj.domain.member.dto.MemberForm;
 import GymInfoService.GymPrj.domain.member.model.Member;
@@ -11,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(readOnly = true)
 public class MemberService {
 
     private final MemberRepository memberRepository;

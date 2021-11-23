@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional(readOnly = true)
 public class CityCategoryService {
 
     private final CityCategoryRepository cityCategoryRepository;
@@ -18,7 +19,7 @@ public class CityCategoryService {
         this.cityCategoryRepository = cityCategoryRepository;
     }
 
-    @Transactional(readOnly = true)
+
     public List<CityCategoryResponse> findAll(){
 
         List<CityCategory> cityCategory = cityCategoryRepository.findAll();

@@ -44,18 +44,40 @@ public class InitDb {
                     .phone("010-1111-2222")
                     .build();
 
-            em.persist(member);
+            Member member1 = Member.builder()
+                    .email("yuntae@naver.com")
+                    .password(passwordEncoder.encode("qwe111"))
+                    .name("박윤태")
+                    .age(27)
+                    .sex(Sex.MALE)
+                    .address(new Address("부산시", "수영구"))
+                    .phone("010-4444-5555")
+                    .build();
 
-            MemberTypeCategory normal = MemberTypeCategory.builder()
+            Member member2 = Member.builder()
+                    .email("hyukjin@naver.com")
+                    .password(passwordEncoder.encode("aaazzz111"))
+                    .name("손혁진")
+                    .age(27)
+                    .sex(Sex.MALE)
+                    .address(new Address("부산시", "수영구"))
+                    .phone("010-7777-8888")
+                    .build();
+
+            em.persist(member);
+            em.persist(member1);
+            em.persist(member2);
+
+            MemberTypeCategory normalCategory = MemberTypeCategory.builder()
                     .typeName("NORMAL")
                     .build();
 
-            MemberTypeCategory gym = MemberTypeCategory.builder()
+            MemberTypeCategory gymCategory = MemberTypeCategory.builder()
                     .typeName("GYM")
                     .build();
 
-            em.persist(normal);
-            em.persist(gym);
+            em.persist(normalCategory);
+            em.persist(gymCategory);
 
             CityCategory cityCategory = CityCategory.builder()
                     .cityName("서울시")
@@ -89,6 +111,20 @@ public class InitDb {
             em.persist(townCategory1);
             em.persist(townCategory2);
             em.persist(townCategory3);
+
+            Gym gym = Gym.builder()
+                    .cityId(1L)
+                    .townId(1L)
+                    .email("asdr1234@naver.com")
+                    .password(passwordEncoder.encode("qwer1234"))
+                    .gymName("주화짐")
+                    .ceoName("정주화")
+                    .tel("02-6666-7777")
+                    .businessNumber("111-2222-3333")
+                    .build();
+
+            em.persist(gym);
+
 
         }
     }

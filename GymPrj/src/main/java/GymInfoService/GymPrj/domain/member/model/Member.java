@@ -26,6 +26,8 @@ public class Member extends Base {
 
     private Long memberTypeId;
 
+    private Long gymId;
+
     private String email;
 
     private String password;
