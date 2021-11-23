@@ -42,7 +42,7 @@ public class Gym extends Base {
     private JoinStatus joinStatus;
 
     @Builder
-    public Gym(Long id, String email, String password, String gymName, String ceoName, String businessNumber, String tel ) {
+    public Gym(Long id, String email, String password, String gymName, String ceoName, String businessNumber, String tel, Long cityId, Long townId ) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -52,6 +52,8 @@ public class Gym extends Base {
         this.tel = tel;
         this.joinStatus = JoinStatus.PENDING;
         this.memberTypeId = 2L;
+        this.cityId = cityId;
+        this.townId = townId;
     }
 
     public void mapCity(Long cityId){
