@@ -23,6 +23,7 @@ public class Trainer extends Base {
 
     private String name;
 
+    @Enumerated(EnumType.STRING)
     private Sex sex;
 
     private Integer age;
@@ -38,4 +39,11 @@ public class Trainer extends Base {
         this.age = age;
         this.career = career;
     }
+
+    public void mapGym(Gym gym){
+        this.gym = gym;
+    }
+
+    public Long id(){return id;}
+
 }

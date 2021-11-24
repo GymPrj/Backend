@@ -18,6 +18,7 @@ public enum ErrorCode {
     MEMBERTYPE_NOT_FOUNT(HttpStatus.NOT_FOUND,"회원유형을 찾을 수 없습니다."),
     CITY_NOT_FOUNT(HttpStatus.NOT_FOUND,"도시를 찾을 수 없습니다."),
     TOWN_NOT_FOUNT(HttpStatus.NOT_FOUND,"구/군을 찾을 수 없습니다."),
+    Gym_NOT_FOUND(HttpStatus.NOT_FOUND,"헬스장계정을 찾을 수 없습니다."),
 
     /* 409 CONFLICT : Resource 의 현재 상태와 충돌. 보통 중복된 데이터 존재 */
     DUPLICATE_EMAIL(HttpStatus.CONFLICT,"이미 존재하는 이메일입니다."),
