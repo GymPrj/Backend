@@ -1,5 +1,6 @@
 package GymInfoService.GymPrj.domain.gym;
 
+import GymInfoService.GymPrj.common.jwt.annotation.Authenticated;
 import GymInfoService.GymPrj.common.jwt.annotation.JwtClaim;
 import GymInfoService.GymPrj.domain.gym.dto.TrainerForm;
 import GymInfoService.GymPrj.domain.gym.service.TrainerService;
@@ -22,6 +23,7 @@ public class TrainerController {
 
 
     @PostMapping
+    @Authenticated
     public ResponseEntity<?> registerTrainer(@JwtClaim("info.id") Long gymId, @RequestBody TrainerForm trainerForm){
         Long trainerId = trainerService.registerTrainer(gymId, trainerForm);
         return ResponseEntity.status(HttpStatus.CREATED).body(trainerId);
