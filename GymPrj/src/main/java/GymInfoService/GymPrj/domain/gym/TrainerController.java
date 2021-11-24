@@ -25,7 +25,9 @@ public class TrainerController {
     @PostMapping
     @Authenticated
     public ResponseEntity<?> registerTrainer(@JwtClaim("info.id") Long gymId, @RequestBody TrainerForm trainerForm){
+
         Long trainerId = trainerService.registerTrainer(gymId, trainerForm);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(trainerId);
     }
 
