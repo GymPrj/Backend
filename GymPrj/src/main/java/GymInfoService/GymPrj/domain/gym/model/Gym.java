@@ -1,9 +1,13 @@
 package GymInfoService.GymPrj.domain.gym.model;
 
 import GymInfoService.GymPrj.common.base.Base;
+import GymInfoService.GymPrj.common.exception.ErrorCode;
+import GymInfoService.GymPrj.common.exception.GymPrjException;
+import GymInfoService.GymPrj.common.jwt.MemberGymPayload;
 import GymInfoService.GymPrj.domain.gym.model.object.JoinStatus;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
@@ -16,7 +20,7 @@ import static lombok.AccessLevel.PROTECTED;
 public class Gym extends Base {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue
     @Column(name = "gym_id")
     private Long id;
 
@@ -71,6 +75,18 @@ public class Gym extends Base {
             return false;
         }
     }
+
+    public void checkPassword(String password, PasswordEncoder passwordEncoder){
+        if(isNotEqualsPassword(password, passwordEncoder)){
+            throw new GymPrjException(ErrorCode.NOT_EQUAL_PASSWORD);
+        }
+    }
+    private boolean isNotEqualsPassword(String password, PasswordEncoder passwordEncoder) {
+        return !passwordEncoder.matches(password, this.password);
+    }
+
+    public MemberGymPayload createPayload(){return new MemberGymPayload(id, email);}
+
 
 
 }

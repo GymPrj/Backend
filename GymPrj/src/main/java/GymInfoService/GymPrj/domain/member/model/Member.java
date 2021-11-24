@@ -20,7 +20,7 @@ import static lombok.AccessLevel.PROTECTED;
 public class Member extends Base {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "member_id")
     private Long id;
 
