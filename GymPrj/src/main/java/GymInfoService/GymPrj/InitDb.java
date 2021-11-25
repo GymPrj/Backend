@@ -4,6 +4,8 @@ import GymInfoService.GymPrj.domain.category.model.CityCategory;
 import GymInfoService.GymPrj.domain.category.model.MemberTypeCategory;
 import GymInfoService.GymPrj.domain.category.model.TownCategory;
 import GymInfoService.GymPrj.domain.gym.model.Gym;
+import GymInfoService.GymPrj.domain.gym.model.Trainer;
+import GymInfoService.GymPrj.domain.gym.model.TrainerComment;
 import GymInfoService.GymPrj.domain.member.model.Member;
 import GymInfoService.GymPrj.domain.member.model.object.Address;
 import GymInfoService.GymPrj.domain.member.model.object.Sex;
@@ -14,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
+
+import static GymInfoService.GymPrj.domain.member.model.object.Sex.MALE;
 
 @Component
 @RequiredArgsConstructor
@@ -39,7 +43,7 @@ public class InitDb {
                     .password(passwordEncoder.encode("qwe123"))
                     .name("정주화")
                     .age(26)
-                    .sex(Sex.MALE)
+                    .sex(MALE)
                     .address(new Address("서울특별시", "강서구"))
                     .phone("010-1111-2222")
                     .build();
@@ -49,7 +53,7 @@ public class InitDb {
                     .password(passwordEncoder.encode("qwe111"))
                     .name("박윤태")
                     .age(27)
-                    .sex(Sex.MALE)
+                    .sex(MALE)
                     .address(new Address("부산시", "수영구"))
                     .phone("010-4444-5555")
                     .build();
@@ -59,7 +63,7 @@ public class InitDb {
                     .password(passwordEncoder.encode("aaazzz111"))
                     .name("손혁진")
                     .age(27)
-                    .sex(Sex.MALE)
+                    .sex(MALE)
                     .address(new Address("부산시", "수영구"))
                     .phone("010-7777-8888")
                     .build();
@@ -123,7 +127,37 @@ public class InitDb {
                     .businessNumber("111-2222-3333")
                     .build();
 
+            Gym gym1 = Gym.builder()
+                    .cityId(1L)
+                    .townId(2L)
+                    .email("juhwa@naver.com")
+                    .password(passwordEncoder.encode("qwer12345"))
+                    .gymName("주화짐2")
+                    .ceoName("정주화")
+                    .tel("02-6666-1111")
+                    .businessNumber("222-3333-4444")
+                    .build();
+            gym1.acceptGym();
             em.persist(gym);
+            em.persist(gym1);
+
+            Trainer trainer = Trainer.builder()
+                    .name("정주화")
+                    .age(26)
+                    .sex(MALE)
+                    .career(1)
+                    .build();
+
+            trainer.mapGym(gym1);
+            em.persist(trainer);
+
+            TrainerComment trainerComment = TrainerComment.builder()
+                    .content("수업 굿굿!")
+                    .build();
+
+            trainerComment.mapTrainer(trainer);
+            trainerComment.mapWriterId(2L);
+            em.persist(trainerComment);
 
 
         }

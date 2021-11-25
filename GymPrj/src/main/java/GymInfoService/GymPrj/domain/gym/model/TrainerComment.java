@@ -31,4 +31,15 @@ public class TrainerComment extends Base {
         this.writerId = writerId;
         this.content = content;
     }
+
+    public void mapWriterId(Long memberId){
+        this.writerId = memberId;
+    }
+
+    public void mapTrainer(Trainer trainer){
+        this.trainer = trainer;
+    }
+
+    public Long id(){return id;}
+
 }
