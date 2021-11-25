@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Data
 public class TrainerCommentForm {
 
-    private final String content;
+    private String content;
 
     public TrainerComment entity(){
         return TrainerComment.builder()

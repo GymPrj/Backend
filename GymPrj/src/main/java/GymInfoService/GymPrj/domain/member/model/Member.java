@@ -28,6 +28,8 @@ public class Member extends Base {
 
     private Long gymId;
 
+    private Long trainerId;
+
     private String email;
 
     private String password;
@@ -70,6 +72,10 @@ public class Member extends Base {
     public void mapMemberType(Long memberTypeId){
         this.memberTypeId = memberTypeId;
     }
+
+    public void mapTrainerId(Long trainerId){this.trainerId =trainerId;}
+
+    public Long getTrainerId(){return this.trainerId;}
 
     private boolean isNotEqualsPassword(String password, PasswordEncoder passwordEncoder) {
         return !passwordEncoder.matches(password, this.password);

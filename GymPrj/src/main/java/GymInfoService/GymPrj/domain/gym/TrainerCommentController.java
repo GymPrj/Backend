@@ -3,7 +3,7 @@ package GymInfoService.GymPrj.domain.gym;
 import GymInfoService.GymPrj.common.jwt.annotation.Authenticated;
 import GymInfoService.GymPrj.common.jwt.annotation.JwtClaim;
 import GymInfoService.GymPrj.domain.gym.dto.TrainerCommentForm;
-import GymInfoService.GymPrj.domain.gym.service.query.TrainerCommentService;
+import GymInfoService.GymPrj.domain.gym.service.TrainerCommentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
