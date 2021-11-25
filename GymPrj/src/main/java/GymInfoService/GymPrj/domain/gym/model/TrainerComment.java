@@ -2,13 +2,17 @@ package GymInfoService.GymPrj.domain.gym.model;
 
 import GymInfoService.GymPrj.common.base.Base;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
+import static lombok.AccessLevel.PROTECTED;
 
 @Entity
+@NoArgsConstructor(access = PROTECTED)
 public class TrainerComment extends Base {
 
     @Id
@@ -32,14 +36,16 @@ public class TrainerComment extends Base {
         this.content = content;
     }
 
-    public void mapWriterId(Long memberId){
+    public void mapWriterId(Long memberId) {
         this.writerId = memberId;
     }
 
-    public void mapTrainer(Trainer trainer){
+    public void mapTrainer(Trainer trainer) {
         this.trainer = trainer;
     }
 
-    public Long id(){return id;}
+    public Long id() {
+        return id;
+    }
 
 }
