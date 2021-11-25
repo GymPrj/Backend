@@ -81,6 +81,10 @@ public class Gym extends Base {
             throw new GymPrjException(ErrorCode.NOT_EQUAL_PASSWORD);
         }
     }
+
+    public void acceptGym(){
+        this.joinStatus = JoinStatus.ACCEPT;
+    }
     private boolean isNotEqualsPassword(String password, PasswordEncoder passwordEncoder) {
         return !passwordEncoder.matches(password, this.password);
     }
