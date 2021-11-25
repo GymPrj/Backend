@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.persistence.*;
 
 import static javax.persistence.EnumType.STRING;
-import static javax.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PROTECTED;
 
 @Entity

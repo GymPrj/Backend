@@ -3,13 +3,17 @@ package GymInfoService.GymPrj.domain.gym.model;
 import GymInfoService.GymPrj.common.base.Base;
 import GymInfoService.GymPrj.domain.member.model.object.Sex;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
+import static lombok.AccessLevel.*;
 
 @Entity
+@NoArgsConstructor(access = PROTECTED)
 public class Trainer extends Base {
 
     @Id

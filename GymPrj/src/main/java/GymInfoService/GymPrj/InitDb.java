@@ -159,6 +159,8 @@ public class InitDb {
             trainerComment.mapWriterId(2L);
             em.persist(trainerComment);
 
+            member1.mapTrainerId(1L);
+
 
         }
     }
