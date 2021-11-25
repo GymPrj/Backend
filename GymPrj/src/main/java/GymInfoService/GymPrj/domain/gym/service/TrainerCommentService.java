@@ -1,4 +1,4 @@
-package GymInfoService.GymPrj.domain.gym.service.query;
+package GymInfoService.GymPrj.domain.gym.service;
 
 import GymInfoService.GymPrj.common.exception.ErrorCode;
 import GymInfoService.GymPrj.common.exception.GymPrjException;
@@ -7,6 +7,7 @@ import GymInfoService.GymPrj.domain.gym.model.Trainer;
 import GymInfoService.GymPrj.domain.gym.model.TrainerComment;
 import GymInfoService.GymPrj.domain.gym.repository.TrainerCommentRepository;
 import GymInfoService.GymPrj.domain.gym.repository.TrainerRepository;
+import GymInfoService.GymPrj.domain.member.model.Member;
 import GymInfoService.GymPrj.domain.member.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,13 +31,21 @@ public class TrainerCommentService {
     @Transactional
     public Long registerTrainerComment(Long memberId, Long trainerId, TrainerCommentForm trainerCommentForm){
 
-        memberRepository.findById(memberId).orElseThrow(() -> new GymPrjException(ErrorCode.MEMBER_NOT_FOUND));
+        Member member = memberRepository.findById(memberId).orElseThrow(() -> new GymPrjException(ErrorCode.MEMBER_NOT_FOUND));
         Trainer trainer = trainerRepository.findById(trainerId).orElseThrow(() -> new GymPrjException(ErrorCode.TRAINER_NOT_FOUND));
+
+        if(isBelongToTrainer(member, trainer)){
+            throw new GymPrjException(ErrorCode.NOT_BELONG_TRAINER);
+        }
 
         TrainerComment trainerComment = trainerCommentForm.entity();
         trainerComment.mapWriterId(memberId);
         trainerComment.mapTrainer(trainer);
 
         return trainerCommentRepository.save(trainerComment).id();
+    }
+
+    private boolean isBelongToTrainer(Member member, Trainer trainer) {
+        return member.getTrainerId() != trainer.id();
     }
 }
