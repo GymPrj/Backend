@@ -1,6 +1,8 @@
 package GymInfoService.GymPrj.domain.gym.model;
 
 import GymInfoService.GymPrj.common.base.Base;
+import GymInfoService.GymPrj.common.exception.ErrorCode;
+import GymInfoService.GymPrj.common.exception.GymPrjException;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
@@ -46,6 +48,16 @@ public class TrainerComment extends Base {
 
     public Long id() {
         return id;
+    }
+
+    public void checkWriterId(Long writerId){
+        if(this.writerId != writerId){
+            throw new GymPrjException(ErrorCode.NOT_WRITER_COMMENT);
+        }
+    }
+
+    public void updateContent(String content){
+        this.content = content;
     }
 
 }

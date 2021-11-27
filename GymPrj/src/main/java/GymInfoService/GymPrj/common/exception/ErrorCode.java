@@ -14,6 +14,7 @@ public enum ErrorCode {
     NOT_EQUAL_PASSWORD(HttpStatus.UNAUTHORIZED,"비밀번호가 일치하지 않습니다."),
     GYM_PENDING_STATUS(HttpStatus.UNAUTHORIZED,"가입대기중인 아이디 입니다."),
     NOT_BELONG_TRAINER(HttpStatus.UNAUTHORIZED,"해당 트레이너의 회원이 아닙니다."),
+    NOT_WRITER_COMMENT(HttpStatus.UNAUTHORIZED,"댓글 작성자가 아닙니다."),
 
     /* 404 NOT_FOUND : Resource 를 찾을 수 없음 */
     MEMBERTYPE_NOT_FOUNT(HttpStatus.NOT_FOUND,"회원유형을 찾을 수 없습니다."),
@@ -21,6 +22,7 @@ public enum ErrorCode {
     TOWN_NOT_FOUNT(HttpStatus.NOT_FOUND,"구/군을 찾을 수 없습니다."),
     Gym_NOT_FOUND(HttpStatus.NOT_FOUND,"헬스장계정을 찾을 수 없습니다."),
     TRAINER_NOT_FOUND(HttpStatus.NOT_FOUND,"트레이너를 찾을 수 없습니다."),
+    COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND,"댓글을 찾을 수 없습니다."),
 
     /* 409 CONFLICT : Resource 의 현재 상태와 충돌. 보통 중복된 데이터 존재 */
     DUPLICATE_EMAIL(HttpStatus.CONFLICT,"이미 존재하는 이메일입니다."),
