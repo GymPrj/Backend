@@ -4,6 +4,7 @@ import GymInfoService.GymPrj.common.jwt.annotation.Authenticated;
 import GymInfoService.GymPrj.common.jwt.annotation.JwtClaim;
 import GymInfoService.GymPrj.domain.gym.dto.TrainerCommentForm;
 import GymInfoService.GymPrj.domain.gym.service.TrainerCommentService;
+import GymInfoService.GymPrj.domain.gym.service.query.TrainerCommentQueryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +15,11 @@ public class TrainerCommentController {
 
     private final TrainerCommentService trainerCommentService;
 
-    public TrainerCommentController(TrainerCommentService trainerCommentService) {
+    private final TrainerCommentQueryService trainerCommentQueryService;
+
+    public TrainerCommentController(TrainerCommentService trainerCommentService, TrainerCommentQueryService trainerCommentQueryService) {
         this.trainerCommentService = trainerCommentService;
+        this.trainerCommentQueryService = trainerCommentQueryService;
     }
 
     @PostMapping("/trainer/{trainerId}")
@@ -25,5 +29,10 @@ public class TrainerCommentController {
         Long trainerCommentId = trainerCommentService.registerTrainerComment(memberId, trainerId, trainerCommentForm);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(trainerCommentId);
+    }
+
+    @GetMapping("/trainer/{trainerId}")
+    public ResponseEntity<?> findTrainerComment(@PathVariable Long trainerId){
+        return ResponseEntity.ok(trainerCommentQueryService.findTrainerComment(trainerId));
     }
 }
