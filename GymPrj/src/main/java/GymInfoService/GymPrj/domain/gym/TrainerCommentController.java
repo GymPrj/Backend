@@ -35,4 +35,21 @@ public class TrainerCommentController {
     public ResponseEntity<?> findTrainerComment(@PathVariable Long trainerId){
         return ResponseEntity.ok(trainerCommentQueryService.findTrainerComment(trainerId));
     }
+
+    @PutMapping("/{trainerCommentId}/trainer")
+    @Authenticated
+    public ResponseEntity<?> updateTrainerComment(@JwtClaim("info.id")Long memberId, @PathVariable Long trainerCommentId, @RequestBody TrainerCommentForm trainerCommentForm){
+        trainerCommentService.updateTrainerComment(memberId, trainerCommentId, trainerCommentForm);
+        return ResponseEntity.ok(HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{trainerCommentId}/trainer")
+    @Authenticated
+    public ResponseEntity<?> deleteTrainerComment(@JwtClaim("info.id")Long memberId, @PathVariable Long trainerCommentId){
+
+        trainerCommentService.deleteTrainerComment(memberId,trainerCommentId);
+
+        return ResponseEntity.ok().build();
+    }
+
 }

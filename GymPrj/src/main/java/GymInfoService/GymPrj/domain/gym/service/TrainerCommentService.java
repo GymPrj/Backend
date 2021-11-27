@@ -45,6 +45,24 @@ public class TrainerCommentService {
         return trainerCommentRepository.save(trainerComment).id();
     }
 
+    @Transactional
+    public void updateTrainerComment(Long memeberId, Long trainerCommentId, TrainerCommentForm trainerCommentForm){
+
+        TrainerComment trainerComment = trainerCommentRepository.findById(trainerCommentId).orElseThrow(() -> new GymPrjException(ErrorCode.COMMENT_NOT_FOUND));
+        trainerComment.checkWriterId(memeberId);
+        trainerComment.updateContent(trainerCommentForm.getContent());
+
+    }
+
+    @Transactional
+    public void deleteTrainerComment(Long memeberId, Long trainerCommentId){
+
+        TrainerComment trainerComment = trainerCommentRepository.findById(trainerCommentId).orElseThrow(() -> new GymPrjException(ErrorCode.COMMENT_NOT_FOUND));
+        trainerComment.checkWriterId(memeberId);
+        trainerComment.delete();
+
+    }
+
     private boolean isBelongToTrainer(Member member, Trainer trainer) {
         return member.getTrainerId() != trainer.id();
     }
