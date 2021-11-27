@@ -1,7 +1,6 @@
 package GymInfoService.GymPrj.domain.gym.repository.query;
 
 import GymInfoService.GymPrj.domain.gym.dto.TrainerResponse;
-import GymInfoService.GymPrj.domain.gym.model.QTrainer;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
