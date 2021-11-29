@@ -12,6 +12,8 @@ public class GymForm {
 
     private Long townId;
 
+    private String detailAddress;
+
     private String email;
 
     private String password;
@@ -34,6 +36,7 @@ public class GymForm {
                 .ceoName(ceoName)
                 .businessNumber(businessNumber)
                 .tel(tel)
+                .detailAddress(detailAddress)
                 .build();
     }
 
