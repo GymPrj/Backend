@@ -32,7 +32,8 @@ public class GymQueryRepository {
                 gym.gymName,
                 gym.ceoName,
                 gym.tel,
-                member.count()
+                member.count(),
+                gym.detailAddress
                 )
         )
                 .from(gym)

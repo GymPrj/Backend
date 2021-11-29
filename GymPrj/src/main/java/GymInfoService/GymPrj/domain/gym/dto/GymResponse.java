@@ -13,10 +13,13 @@ public class GymResponse {
 
     private final Long memberCount;
 
-    public GymResponse(String gymName, String ceoName, String tel, Long memberCount) {
+    private final String detailAddress;
+
+    public GymResponse(String gymName, String ceoName, String tel, Long memberCount, String detailAddress) {
         this.gymName = gymName;
         this.ceoName = ceoName;
         this.tel = tel;
         this.memberCount = memberCount;
+        this.detailAddress = detailAddress;
     }
 }
