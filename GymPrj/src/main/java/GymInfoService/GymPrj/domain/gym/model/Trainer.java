@@ -1,6 +1,9 @@
 package GymInfoService.GymPrj.domain.gym.model;
 
 import GymInfoService.GymPrj.common.base.Base;
+import GymInfoService.GymPrj.common.exception.ErrorCode;
+import GymInfoService.GymPrj.common.exception.GymPrjException;
+import GymInfoService.GymPrj.domain.gym.dto.TrainerForm;
 import GymInfoService.GymPrj.domain.member.model.object.Sex;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -49,5 +52,18 @@ public class Trainer extends Base {
     }
 
     public Long id(){return id;}
+
+    public void update(TrainerForm trainerForm){
+        this.name = trainerForm.getName();
+        this.sex = trainerForm.getSex();
+        this.age = trainerForm.getAge();;
+        this.career = trainerForm.getCareer();
+    }
+
+    public void checkGymId(Long gymId){
+        if(this.gym.id() != gymId){
+            throw new GymPrjException(ErrorCode.NOT_BELONG_GYM_TRAINER);
+        }
+    }
 
 }

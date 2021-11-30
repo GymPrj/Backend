@@ -37,4 +37,16 @@ public class TrainerController {
         return ResponseEntity.ok(trainerQueryService.findTrainerByGymId(gymId));
     }
 
+    @PutMapping("/{trainerId}")
+    public ResponseEntity<?> updateTrainer(@JwtClaim("info.id") Long gymId, @PathVariable Long trainerId, @RequestBody TrainerForm trainerForm){
+        trainerService.updateTrainer(gymId, trainerId, trainerForm);
+        return ResponseEntity.ok(HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(("/{trainerId}"))
+    public ResponseEntity<?> deleteTrainer(@JwtClaim("info.id") Long gymId, @PathVariable Long trainerId){
+        trainerService.deleteTrainer(gymId,trainerId);
+        return ResponseEntity.ok().build();
+    }
+
 }

@@ -87,6 +87,9 @@ public class Gym extends Base {
     public void acceptGym(){
         this.joinStatus = JoinStatus.ACCEPT;
     }
+
+    public Long id(){return id;}
+
     private boolean isNotEqualsPassword(String password, PasswordEncoder passwordEncoder) {
         return !passwordEncoder.matches(password, this.password);
     }
