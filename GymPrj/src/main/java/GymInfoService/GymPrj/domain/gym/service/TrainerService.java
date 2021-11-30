@@ -37,4 +37,24 @@ public class TrainerService {
         return trainerRepository.save(trainer).id();
 
     }
+
+    @Transactional
+    public void updateTrainer(Long gymId, Long trainerId, TrainerForm trainerForm){
+
+        gymRepository.findById(gymId).orElseThrow(() -> new GymPrjException(ErrorCode.Gym_NOT_FOUND));
+        Trainer trainer = trainerRepository.findById(trainerId).orElseThrow(() -> new GymPrjException(ErrorCode.TRAINER_NOT_FOUND));
+
+        trainer.checkGymId(gymId);
+        trainer.update(trainerForm);
+
+    }
+
+    @Transactional
+    public void deleteTrainer(Long gymId, Long trainerId){
+        gymRepository.findById(gymId).orElseThrow(() -> new GymPrjException(ErrorCode.Gym_NOT_FOUND));
+        Trainer trainer = trainerRepository.findById(trainerId).orElseThrow(() -> new GymPrjException(ErrorCode.TRAINER_NOT_FOUND));
+
+        trainer.checkGymId(gymId);
+        trainer.delete();
+    }
 }
