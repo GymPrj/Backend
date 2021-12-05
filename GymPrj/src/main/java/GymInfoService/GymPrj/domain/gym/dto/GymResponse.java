@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class GymResponse {
 
+    private final Long gymId;
+
     private final String gymName;
 
     private final String ceoName;
@@ -15,11 +17,13 @@ public class GymResponse {
 
     private final String detailAddress;
 
-    public GymResponse(String gymName, String ceoName, String tel, Long memberCount, String detailAddress) {
+    public GymResponse(Long gymId, String gymName, String ceoName, String tel, Long memberCount, String detailAddress) {
+        this.gymId = gymId;
         this.gymName = gymName;
         this.ceoName = ceoName;
         this.tel = tel;
         this.memberCount = memberCount;
         this.detailAddress = detailAddress;
     }
+
 }

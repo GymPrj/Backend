@@ -29,6 +29,7 @@ public class GymQueryRepository {
     public Page<GymResponse> findGymByCondition(FindGymCondition findGymCondition, Pageable pageable) {
 
         List<GymResponse> gymList = query.select(Projections.constructor(GymResponse.class,
+                gym.id,
                 gym.gymName,
                 gym.ceoName,
                 gym.tel,
