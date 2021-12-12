@@ -22,6 +22,7 @@ public class TrainerQueryRepository {
     public List<TrainerResponse> findTrainerByGymId(Long gymId){
 
         return query.select(Projections.constructor(TrainerResponse.class,
+                trainer.id,
                 trainer.name,
                 trainer.sex,
                 trainer.age,
