@@ -22,6 +22,7 @@ public class TrainerCommentQueryRepository {
 
     public List<TrainerCommentResponse> findTrainerComment(Long trainerId){
         return query.select(Projections.constructor(TrainerCommentResponse.class,
+                trainerComment.id,
                 member.name,
                 trainerComment.content,
                 trainerComment.createdDateTime))

@@ -6,6 +6,8 @@ import lombok.Data;
 @Data
 public class TrainerResponse {
 
+    private final Long id;
+
     private final String name;
 
     private final Sex sex;
@@ -14,7 +16,8 @@ public class TrainerResponse {
 
     private final Integer career;
 
-    public TrainerResponse(String name, Sex sex, Integer age, Integer career) {
+    public TrainerResponse(Long id, String name, Sex sex, Integer age, Integer career) {
+        this.id = id;
         this.name = name;
         this.sex = sex;
         this.age = age;

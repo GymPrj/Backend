@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 @Data
 public class TrainerCommentResponse {
 
+    private final Long id;
+
     private final String writerName;
 
     private final String content;
@@ -15,7 +17,8 @@ public class TrainerCommentResponse {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private final LocalDateTime createdDate;
 
-    public TrainerCommentResponse(String writerName, String content, LocalDateTime createdDate) {
+    public TrainerCommentResponse(Long id, String writerName, String content, LocalDateTime createdDate) {
+        this.id = id;
         this.writerName = writerName;
         this.content = content;
         this.createdDate = createdDate;
