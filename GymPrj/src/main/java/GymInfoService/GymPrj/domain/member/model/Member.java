@@ -46,9 +46,24 @@ public class Member extends Base {
     private String phone;
 
 
+//    @Builder
+//    public Member(Long id, String email, String password, String name, Sex sex, Integer age, Address address, String phone) {
+//        this.id = id;
+//        this.email = email;
+//        this.password = password;
+//        this.name = name;
+//        this.sex = sex;
+//        this.age = age;
+//        this.address = address;
+//        this.phone = phone;
+//        this.memberTypeId = 1L;
+//
+//    }
+
     @Builder
-    public Member(Long id, String email, String password, String name, Sex sex, Integer age, Address address, String phone) {
+    public Member(Long id, Long memberTypeId, String email, String password, String name, Sex sex, Integer age, Address address, String phone) {
         this.id = id;
+        this.memberTypeId = memberTypeId;
         this.email = email;
         this.password = password;
         this.name = name;
@@ -56,7 +71,6 @@ public class Member extends Base {
         this.age = age;
         this.address = address;
         this.phone = phone;
-        this.memberTypeId = 1L;
 
     }
 
@@ -82,4 +96,6 @@ public class Member extends Base {
     }
 
     public MemberGymPayload createPayload(){return new MemberGymPayload(id, email);}
+
+    public Long getMemberTypeId(){return this.memberTypeId;}
 }
