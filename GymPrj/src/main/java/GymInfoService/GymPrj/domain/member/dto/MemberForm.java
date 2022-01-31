@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Data
 public class MemberForm {
 
+    private Long memberTypeId;
 
     private String email;
 
@@ -32,6 +33,7 @@ public class MemberForm {
         encryptPassword(passwordEncoder);
         validateEmail(memberValidator);
         return Member.builder()
+                .memberTypeId(memberTypeId)
                 .email(email)
                 .password(password)
                 .name(name)

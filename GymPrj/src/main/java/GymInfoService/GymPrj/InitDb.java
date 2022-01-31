@@ -41,6 +41,7 @@ public class InitDb {
         @Transactional
         public void dbInit(){
             Member member = Member.builder()
+                    .memberTypeId(1L)
                     .email("qwe199942@naver.com")
                     .password(passwordEncoder.encode("qwe123"))
                     .name("정주화")
@@ -51,6 +52,7 @@ public class InitDb {
                     .build();
 
             Member member1 = Member.builder()
+                    .memberTypeId(1L)
                     .email("yuntae@naver.com")
                     .password(passwordEncoder.encode("qwe111"))
                     .name("박윤태")
@@ -61,6 +63,7 @@ public class InitDb {
                     .build();
 
             Member member2 = Member.builder()
+                    .memberTypeId(1L)
                     .email("hyukjin@naver.com")
                     .password(passwordEncoder.encode("aaazzz111"))
                     .name("손혁진")
@@ -70,9 +73,22 @@ public class InitDb {
                     .phone("010-7777-8888")
                     .build();
 
+            Member member3 = Member.builder()
+                    .memberTypeId(3L)
+                    .email("admin@naver.com")
+                    .password(passwordEncoder.encode("admin1"))
+                    .name("어드민")
+                    .age(99)
+                    .sex(MALE)
+                    .address(new Address("서울시", "강서구"))
+                    .phone("010-6762-5555")
+                    .build();
+
+
             em.persist(member);
             em.persist(member1);
             em.persist(member2);
+            em.persist(member3);
 
             MemberTypeCategory normalCategory = MemberTypeCategory.builder()
                     .typeName("NORMAL")
