@@ -3,6 +3,8 @@ package GymInfoService.GymPrj;
 import GymInfoService.GymPrj.domain.category.model.CityCategory;
 import GymInfoService.GymPrj.domain.category.model.MemberTypeCategory;
 import GymInfoService.GymPrj.domain.category.model.TownCategory;
+import GymInfoService.GymPrj.domain.example.Memberss;
+import GymInfoService.GymPrj.domain.example.Team;
 import GymInfoService.GymPrj.domain.gym.model.Gym;
 import GymInfoService.GymPrj.domain.gym.model.Trainer;
 import GymInfoService.GymPrj.domain.gym.model.TrainerComment;
@@ -160,6 +162,40 @@ public class InitDb {
             em.persist(trainerComment);
 
             member1.mapTrainerId(1L);
+
+//            Team team =Team.builder()
+//                    .teamName("주화팀").build();
+//            em.persist(team);
+//
+//            Memberss memberss1 = Memberss.builder()
+//                    .name("정주화")
+//                    .build();
+//            Memberss memberss2 = Memberss.builder()
+//                    .name("성우석")
+//                    .build();
+//            Memberss memberss3 = Memberss.builder()
+//                    .name("황호섭")
+//                    .build();
+//            em.persist(memberss1);
+//            em.persist(memberss2);
+//            em.persist(memberss3);
+//
+//            team.mapTeam(memberss1);
+//            team.mapTeam(memberss2);
+//            team.mapTeam(memberss3);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         }
